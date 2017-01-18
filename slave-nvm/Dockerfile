@@ -2,12 +2,6 @@ FROM openshift/jenkins-slave-base-centos7
 
 MAINTAINER Michael Nairn <mnairn@redhat.com>
 
-ENV BASH_ENV=/usr/local/bin/nvm_enable \
-    ENV=/usr/local/bin/nvm_enable \
-    PROMPT_COMMAND=". /usr/local/bin/nvm_enable"
-
-COPY contrib/bin/nvm_enable /usr/local/bin/nvm_enable
-
 # Install Ruby
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 RUN yum -y install make gcc-c++

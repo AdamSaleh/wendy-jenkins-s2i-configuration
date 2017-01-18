@@ -18,6 +18,7 @@ RUN export NVM_DIR="$HOME/.nvm" && \
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && \
     nvm use 4.4 && npm i -g grunt && npm i -g jq && npm i -g commander  && npm i -g async  && npm i -g rimraf  && npm i -g winston  && npm i -g colors
 
+RUN yum -y install memcached
 RUN chown -R 1001:0 $HOME && \
     chmod -R g+rw $HOME
 

@@ -21,10 +21,18 @@ RUN export NVM_DIR="$HOME/.nvm" && \
 
 RUN yum -y install memcached
 COPY contrib/mongodb-org.repo /etc/yum.repos.d/mongodb-org.repo
-RUN yum repolist
 RUN yum -y install mongodb-org
+RUN yum -y install python-setuptools
+RUN easy_install supervisor
+
+COPY config/supervisord.conf /etc/supervisord.conf
+
+RUN mkdir -p /data/db
+RUN mkdir -p /var/log/supervisor/
 
 RUN chown -R 1001:0 $HOME && \
     chmod -R g+rw $HOME
 
 USER 1001
+
+ENTRYPOINT ["/usr/bin/supervisord -n"]

@@ -34,9 +34,11 @@ RUN mkdir -p /var/log/supervisor/
 RUN chown -R 1001:0 $HOME && \
     chmod -R g+rw $HOME
 
+COPY /contrib/run-jnlp-client /usr/local/bin/run-jnlp-client
+RUN chmod -R a+x /usr/local/bin/run-jnlp-client
+
 USER 1001
 
 EXPOSE 27017
 EXPOSE 28017
 
-COPY /contrib/run-jnlp-client /usr/local/bin/run-jnlp-client

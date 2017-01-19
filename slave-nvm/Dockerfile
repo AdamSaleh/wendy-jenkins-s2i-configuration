@@ -36,6 +36,11 @@ RUN chmod -R a+x /usr/local/bin/run-jnlp-client
 RUN mkdir -p /opt/feedhenry/fh-dynoman/dynos/
 RUN chmod -R 777 /opt/feedhenry/fh-dynoman/dynos/
 
+RUN export NVM_DIR="$HOME/.nvm" && \
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && \
+    nvm use 0.10 && npm i -g grunt && \
+    nvm use 4.4 && npm i -g grunt 
+ 
 USER 1001
 
 EXPOSE 27017

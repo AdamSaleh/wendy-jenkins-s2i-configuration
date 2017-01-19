@@ -26,8 +26,6 @@ RUN mkdir -p /data/db
 RUN chown -R 1001:0 /data/db
 RUN mkdir -p /var/log/supervisor/
 
-RUN chown -R 1001:0 $HOME && \
-    chmod -R g+rw $HOME
 
 COPY contrib/run-jnlp-client /usr/local/bin/run-jnlp-client
 COPY config/npmrc /etc/npmrc 
@@ -41,6 +39,9 @@ RUN export NVM_DIR="$HOME/.nvm" && \
     nvm use 0.10 && npm i -g grunt && \
     nvm use 4.4 && npm i -g grunt 
  
+RUN chown -R 1001:0 $HOME && \
+    chmod -R g+rw $HOME
+
 USER 1001
 
 EXPOSE 27017

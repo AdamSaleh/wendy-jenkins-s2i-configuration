@@ -28,6 +28,7 @@ RUN easy_install supervisor
 COPY config/supervisord.conf /etc/supervisord.conf
 
 RUN mkdir -p /data/db
+RUN chown -R 1001:0 /data/db
 RUN mkdir -p /var/log/supervisor/
 
 RUN chown -R 1001:0 $HOME && \
@@ -35,4 +36,7 @@ RUN chown -R 1001:0 $HOME && \
 
 USER 1001
 
-ENTRYPOINT ["/usr/bin/supervisord -n"]
+EXPOSE 27017
+EXPOSE 28017
+
+COPY /contrib/run-jnlp-client /usr/local/bin/run-jnlp-client

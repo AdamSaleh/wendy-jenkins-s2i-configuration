@@ -45,7 +45,7 @@ objects:
   metadata:
     name: ${JENKINS_SERVICE_NAME}-slave-nvm
     annotations:
-        slave-label: ubuntu
+        slave-label: nvm
     labels:
       role: jenkins-slave
 - apiVersion: v1
@@ -68,6 +68,38 @@ objects:
       dockerStrategy:
           noCache: true
       type: Docker 
+    triggers:
+    - type: ImageChange
+    - type: ConfigChange
+
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: ${JENKINS_SERVICE_NAME}-slave-ubuntu
+    annotations:
+        slave-label: ubuntu
+    labels:
+      role: jenkins-slave
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    name: ${JENKINS_SERVICE_NAME}-slave-ubuntu
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: ${JENKINS_SERVICE_NAME}-slave-ubuntu:latest
+    runPolicy: Serial
+    source:
+      git:
+        uri: https://github.com/adamsaleh/wendy-jenkins-s2i-configuration
+        ref: slave-ubuntu
+      contextDir: slave-bob-ubuntu
+      type: Git
+    strategy:
+      dockerStrategy:
+          noCache: true
+      type: Docker
     triggers:
     - type: ImageChange
     - type: ConfigChange

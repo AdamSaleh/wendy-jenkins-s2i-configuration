@@ -22,6 +22,7 @@ RUN apt-get update && \
     mv openshift*/oc /usr/local/bin && \
     rm -rf openshift-origin-client-tools-*
 
+ADD ./contrib/settings.xml $HOME/.m2/
 
 COPY contrib/bin/nvm_enable /usr/local/bin/nvm_enable
 

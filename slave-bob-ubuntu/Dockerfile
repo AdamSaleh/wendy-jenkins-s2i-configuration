@@ -18,6 +18,7 @@ RUN apt-get update && \
     chown -R 1001:0 /var/log/feedhenry/core/ && \
     chmod -R g+w /var/log/feedhenry/core/ && \
     mkdir -p /home/jenkins/.m2 && \
+    echo 127.0.0.1 loghost >> /etc/hosts && \
     chown -R 1001:0 /home/jenkins && \
     chmod -R g+w /home/jenkins && \
     wget https://github.com/openshift/origin/releases/download/v1.3.0/openshift-origin-client-tools-v1.3.0-3ab7af3d097b57f933eccef684a714f2368804e7-linux-64bit.tar.gz && \

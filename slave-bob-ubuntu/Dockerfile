@@ -14,6 +14,9 @@ RUN apt-get update && \
     (curl -v https://www.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | \
     tar -zx -C /usr/local) && \
     ln -sf /usr/local/apache-maven-$MAVEN_VERSION/bin/mvn /usr/local/bin/mvn && \
+    mkdir -p /var/log/feedhenry/core/ && \
+    chown -R 1001:0 /var/log/feedhenry/core/ && \
+    chmod -R g+w /var/log/feedhenry/core/ && \
     mkdir -p /home/jenkins/.m2 && \
     chown -R 1001:0 /home/jenkins && \
     chmod -R g+w /home/jenkins && \

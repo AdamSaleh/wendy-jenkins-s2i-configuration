@@ -7,7 +7,9 @@ ENV HOME=/home/jenkins
 USER root
 # Install Jenkins 
 
-RUN mkdir -p /home/jenkins && \
+RUN apt-get update && \
+    apt-get -y install make && \
+    mkdir -p /home/jenkins && \
     chown -R 1001:0 /home/jenkins && \
     chmod -R g+w /home/jenkins && \
     wget https://github.com/openshift/origin/releases/download/v1.3.0/openshift-origin-client-tools-v1.3.0-3ab7af3d097b57f933eccef684a714f2368804e7-linux-64bit.tar.gz && \

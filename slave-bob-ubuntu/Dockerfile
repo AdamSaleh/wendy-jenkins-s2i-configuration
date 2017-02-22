@@ -7,19 +7,7 @@ ENV HOME=/home/jenkins
 USER root
 # Install Jenkins 
 
-ENV MAVEN_VERSION=3.1.1
-
-RUN apt-get update && \
-    apt-get -y install make ant && \
-    (curl -v https://www.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | \
-    tar -zx -C /usr/local) && \
-    ln -sf /usr/local/apache-maven-$MAVEN_VERSION/bin/mvn /usr/local/bin/mvn && \
-    mkdir -p /var/log/feedhenry/core/ && \
-    chown -R 1001:0 /var/log/feedhenry/core/ && \
-    chmod -R g+w /var/log/feedhenry/core/ && \
-    mkdir -p /home/jenkins/.m2 && \
-    echo 127.0.0.1 loghost >> /etc/hosts && \
-    chown -R 1001:0 /home/jenkins && \
+RUN chown -R 1001:0 /home/jenkins && \
     chmod -R g+w /home/jenkins && \
     wget https://github.com/openshift/origin/releases/download/v1.3.0/openshift-origin-client-tools-v1.3.0-3ab7af3d097b57f933eccef684a714f2368804e7-linux-64bit.tar.gz && \
     tar -xvzf openshift-origin-client-tools-v1.3.0-3ab7af3d097b57f933eccef684a714f2368804e7-linux-64bit.tar.gz && \

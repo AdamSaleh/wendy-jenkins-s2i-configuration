@@ -14,8 +14,7 @@ RUN apt-get update && \
     (curl -v https://www.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | \
     tar -zx -C /usr/local) && \
     ln -sf /usr/local/apache-maven-$MAVEN_VERSION/bin/mvn /usr/local/bin/mvn && \
-    mkdir -p $HOME/.m2 && \
-    mkdir -p /home/jenkins && \
+    mkdir -p /home/jenkins/.m2 && \
     chown -R 1001:0 /home/jenkins && \
     chmod -R g+w /home/jenkins && \
     wget https://github.com/openshift/origin/releases/download/v1.3.0/openshift-origin-client-tools-v1.3.0-3ab7af3d097b57f933eccef684a714f2368804e7-linux-64bit.tar.gz && \

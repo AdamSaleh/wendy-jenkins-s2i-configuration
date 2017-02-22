@@ -7,8 +7,14 @@ ENV HOME=/home/jenkins
 USER root
 # Install Jenkins 
 
+ENV MAVEN_VERSION=3.1.1
+
 RUN apt-get update && \
-    apt-get -y install make maven ant && \
+    apt-get -y install make ant && \
+    (curl -v https://www.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | \
+    tar -zx -C /usr/local) && \
+    ln -sf /usr/local/apache-maven-$MAVEN_VERSION/bin/mvn /usr/local/bin/mvn && \
+    mkdir -p $HOME/.m2
     mkdir -p /home/jenkins && \
     chown -R 1001:0 /home/jenkins && \
     chmod -R g+w /home/jenkins && \

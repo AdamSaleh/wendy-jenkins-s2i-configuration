@@ -8,7 +8,7 @@ USER root
 # Install Jenkins 
 
 RUN apt-get update && \
-    apt-get -y install make && \
+    apt-get -y install make maven ant && \
     mkdir -p /home/jenkins && \
     chown -R 1001:0 /home/jenkins && \
     chmod -R g+w /home/jenkins && \

@@ -29,6 +29,7 @@ RUN mkdir -p /opt/feedhenry/fh-dynoman/dynos/
 RUN chmod -R 777 /opt/feedhenry/fh-dynoman/dynos/
 RUN mkdir -p /opt/feedhenry/fh-dynoman/state/
 RUN chmod -R 777 /opt/feedhenry/fh-dynoman/state/
+RUN update-alternatives --install /usr/bin/cc cc /usr/bin/gcc-4.8 50
 
 USER default
 

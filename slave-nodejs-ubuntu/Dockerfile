@@ -14,6 +14,9 @@ ENV BASH_ENV=/usr/local/bin/nvm_enable \
 
 RUN apt-get update && apt-get install -y build-essential g++
 
+RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/bin/jq
+RUN chmod +x /usr/bin/jq
+
 RUN mkdir -p /opt/feedhenry/fh-dynoman/dynos/
 RUN chmod -R 777 /opt/feedhenry/fh-dynoman/dynos/
 RUN mkdir -p /opt/feedhenry/fh-dynoman/state/

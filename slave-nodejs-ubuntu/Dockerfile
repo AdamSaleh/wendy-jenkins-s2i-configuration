@@ -12,7 +12,13 @@ ENV BASH_ENV=/usr/local/bin/nvm_enable \
     ENV=/usr/local/bin/nvm_enable \
     PROMPT_COMMAND=". /usr/local/bin/nvm_enable"
 
-RUN apt-get update && apt-get install -y build-essential g++
+RUN apt-get install python-software-properties && \
+    add-apt-repository ppa:ubuntu-toolchain-r/test && \
+    apt-get update && \
+    apt-get install -y gcc-4.8 make && \
+    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
+
+RUN apt-get update && apt-get install -y liblog4cxx10-dev
 
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/bin/jq
 RUN chmod +x /usr/bin/jq

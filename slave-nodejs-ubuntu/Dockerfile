@@ -24,6 +24,8 @@ USER default
 RUN export NVM_DIR="$HOME/.nvm" && \
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | METHOD=script bash && \
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && \
+    nvm install 0.10 && \
+    nvm use 0.10 && npm i -g grunt && \
     nvm install 4.4 && \
     nvm use 4.4 && npm i -g grunt
 

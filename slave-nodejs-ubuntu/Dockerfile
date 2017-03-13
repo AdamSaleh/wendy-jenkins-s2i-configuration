@@ -14,6 +14,9 @@ ENV BASH_ENV=/usr/local/bin/nvm_enable \
 
 RUN apt-get update && apt-get install -y build-essential g++
 
+RUN mkdir -p /opt/feedhenry/fh-dynoman/dynos/
+RUN chmod -R 777 /opt/feedhenry/fh-dynoman/dynos/
+
 USER default
 
 RUN export NVM_DIR="$HOME/.nvm" && \

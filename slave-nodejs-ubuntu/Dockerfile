@@ -19,6 +19,7 @@ RUN apt-get install python-software-properties && \
     update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
 
 RUN apt-get update && apt-get install -y liblog4cxx10-dev
+RUN apt-get update && apt-get install -y bzip2
 
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/bin/jq
 RUN chmod +x /usr/bin/jq

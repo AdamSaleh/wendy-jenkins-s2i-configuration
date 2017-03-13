@@ -12,6 +12,8 @@ ENV BASH_ENV=/usr/local/bin/nvm_enable \
     ENV=/usr/local/bin/nvm_enable \
     PROMPT_COMMAND=". /usr/local/bin/nvm_enable"
 
+RUN apt-get update && apt-get install -y build-essential g++ memcached
+
 USER default
 
 RUN export NVM_DIR="$HOME/.nvm" && \

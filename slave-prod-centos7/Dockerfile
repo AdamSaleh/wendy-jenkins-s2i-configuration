@@ -18,4 +18,6 @@ RUN curl -Lk https://password.corp.redhat.com/cacert.crt -o /etc/pki/ca-trust/so
     ln -sf /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem /etc/pki/tls/certs/ca-bundle.crt && \
     update-ca-trust && update-ca-trust enable
 
+RUN yum install -y tmux 
+
 USER 1001
